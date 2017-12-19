@@ -83,9 +83,7 @@
             "module": "flask",
             "cwd": "${workspaceFolder}",
             "env": {
-                "FLASK_APP": "${workspaceFolder}/app.py",
-                "LC_ALL": "en_US.utf-8",
-                "LANG": "en_US.utf-8"
+                "FLASK_APP": "${workspaceFolder}/app.py"
             },
             "args": [
                 "run",
