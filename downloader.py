@@ -39,7 +39,7 @@ class Downloader:
         song_names = self.__read_songs_file()
 
         if len(song_names) > 100:
-            os.remove(song_names[0])
+            os.remove(song_names[0].replace("\n", ""))
             song_names.pop(0)
 
         song_names.append(song_name)
@@ -52,4 +52,5 @@ class Downloader:
     def __write_songs_file(self, song_names):
         with open(self.songs_file_path, 'w') as songs_file:
             for song_name in song_names:
-                songs_file.write(song_name)
+                songs_file.write(song_name.replace("\n", ""))
+                songs_file.write("\n")
