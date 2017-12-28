@@ -3,21 +3,22 @@ import os
 import youtube_dl
 
 OPTIONS = {
-            'format': 'bestaudio/best',
-            'extractaudio' : True,  # only keep the audio
-            'audioformat' : "mp3",  # convert to mp3
-            'outtmpl': 'songs/%(id)s.m4a',  # name the file the ID of the video
-            'noplaylist' : True,  # only download single song, not playlist
-            'writethumbnail': True,
-            'postprocessors': [
-                {
-                    'key': 'FFmpegExtractAudio',
-                    'preferredcodec': 'mp3',
-                },
-                {'key': 'EmbedThumbnail'},
-                {'key': 'FFmpegMetadata'},
-            ],
-        }
+    'nocheckcertificate': True,
+    'format': 'bestaudio/best',
+    'extractaudio' : True,  # only keep the audio
+    'audioformat' : "mp3",  # convert to mp3
+    'outtmpl': 'songs/%(id)s.m4a',  # name the file the ID of the video
+    'noplaylist' : True,  # only download single song, not playlist
+    'writethumbnail': True,
+    'postprocessors': [
+        {
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+        },
+        {'key': 'EmbedThumbnail'},
+        {'key': 'FFmpegMetadata'},
+    ],
+}
 
 class Downloader:
     '''YouTube downloader'''
