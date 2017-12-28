@@ -30,7 +30,10 @@ def download():
     song_id = request.args['id']
     
     if song_id.find('.') == -1:
-        downloader.download(song_id)
+        try:
+            downloader.download(song_id)
+        except Exception as e:
+            return str(e), 500
         return send_from_directory(downloader.songs_path, song_id + '.mp3', as_attachment=True)
     else:
         return 'Invalid id', 400
