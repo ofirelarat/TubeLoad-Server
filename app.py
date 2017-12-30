@@ -11,9 +11,11 @@ downloader = Downloader()
 def root():
     return app.send_static_file('index.html')
 
+
 @app.route('/static/<path:path>')
 def static_folder(path):
     return app.send_static_file(path)
+
 
 @app.route('/images/<path:path>')
 def images(path):
@@ -24,6 +26,7 @@ def images(path):
 def get_version():
     with open ('static/version.txt', 'r') as version_file:
         return version_file.read()
+
 
 @app.route('/download')
 def download():
