@@ -7,6 +7,7 @@ from downloader import Downloader
 app = Flask(__name__)
 downloader = Downloader()
 
+
 @app.route('/')
 def root():
     return app.send_static_file('index.html')
