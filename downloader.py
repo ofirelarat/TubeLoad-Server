@@ -25,8 +25,10 @@ class Downloader:
     def __init__(self):
         self.youtube_url = 'https://www.youtube.com/watch?v='
         self.songs_path = './songs/'
-        os.mkdir(self.songs_path)
         self.songs = []
+
+        if not os.path.exists(directory):
+            os.mkdir(self.songs_path)
 
     def download(self, song_id):
         '''downloading a song from YouTube'''
