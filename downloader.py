@@ -25,33 +25,22 @@ class Downloader:
     def __init__(self):
         self.youtube_url = 'https://www.youtube.com/watch?v='
         self.songs_path = './songs/'
-        self.songs_file_path = self.songs_path + 'songs.txt'
+        self.songs = []
 
     def download(self, song_id):
         '''downloading a song from YouTube'''
         song_path = 'songs/' + song_id + '.mp3'
+        print(self.songs)
 
         if not os.path.exists(song_path):
             youtube_downloader = youtube_dl.YoutubeDL(OPTIONS)
             youtube_downloader.download([self.youtube_url + song_id])
-            self.__update_songs_file(song_id)
-
-    def __update_songs_file(self, song_name):
-        song_names = self.__read_songs_file()
-
-        if len(song_names) > 200:
-            os.remove(song_names[0].replace("\n", ""))
-            song_names.pop(0)
-
-        song_names.append(song_name)
-        self.__write_songs_file(song_names)
-
-    def __read_songs_file(self):
-        with open(self.songs_file_path, 'r') as songs_file:
-            return songs_file.readlines()
-
-    def __write_songs_file(self, song_names):
-        with open(self.songs_file_path, 'w') as songs_file:
-            for song_name in song_names:
-                songs_file.write(song_name.replace("\n", ""))
-                songs_file.write("\n")
+            self.songs.append(song_id)
+            print(self.songs)
+            self.__remove_last_song()
+    
+    def __remove_last_song(self):
+        if len(self.songs) > 3:
+            os.remove(self.songs_path + self.songs[0] + '.mp3')
+            self.songs = self.songs[1:]
+            print(self.songs)
