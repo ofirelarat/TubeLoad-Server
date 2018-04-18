@@ -27,7 +27,7 @@ class Downloader:
         self.songs_path = './songs/'
         self.songs = []
 
-        if not os.path.exists(directory):
+        if not os.path.exists(self.songs_path):
             os.mkdir(self.songs_path)
 
     def download(self, song_id):
