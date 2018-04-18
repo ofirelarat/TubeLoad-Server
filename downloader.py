@@ -39,7 +39,7 @@ class Downloader:
     def __update_songs_file(self, song_name):
         song_names = self.__read_songs_file()
 
-        if len(song_names) > 100:
+        if len(song_names) > 200:
             os.remove(song_names[0].replace("\n", ""))
             song_names.pop(0)
 
