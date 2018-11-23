@@ -12,4 +12,4 @@ pylint==1.8.1
 six==1.11.0
 Werkzeug==0.13
 wrapt==1.10.11
-youtube-dl==2017.12.14
+youtube-dl>=2018.11.23
